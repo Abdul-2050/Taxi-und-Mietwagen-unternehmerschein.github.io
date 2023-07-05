@@ -1,119 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Question List</title>
-    <style>
-        ul {
-            list-style-type: none;
-        }
-
-        li.nav {
-            display: inline-block;
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-        }
-
-        #questionImage {
-            width: 400px;
-            height: 400px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="current">
-        <h1>Lections</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Drive-Taxi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Progress<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Lections</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Question</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li> -->
+            </ul>
+        </div>
     </nav>
-    <article id="lections" class="current">
-        <section>
-            <ul class="list" id="lectionsList"></ul>
-        </section>
-    </article>
-    <nav class="next">
-        <a href="#" class="button back">Lections</a>
-        <h1 id="questionTitle">Question</h1>
-    </nav>
-    <article id="detail" class="next">
-        <section>
-            <img id="questionImage" src="" alt="Question Image">
-        </section>
-    </article>
 
-    <!-- Include the Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.1/firebase-storage.js"></script>
 
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAuYoZO_ExZiKY2t2MnrzO_UnLk6ecvHUo",
-            authDomain: "taxi-unternehmerschein.firebaseapp.com",
-            databaseURL: "https://taxi-unternehmerschein-default-rtdb.firebaseio.com",
-            projectId: "taxi-unternehmerschein",
-            storageBucket: "taxi-unternehmerschein.appspot.com",
-            messagingSenderId: "753758307661",
-            appId: "1:753758307661:web:c2a4fcbedbd0eb9a2a2304"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 1</a>
+            <span class="badge badge-primary badge-pill">5</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 2</a>
+            <span class="badge badge-primary badge-pill">5</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 3</a>
+            <span class="badge badge-primary badge-pill">8</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 4</a>
+            <span class="badge badge-primary badge-pill">18</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 5</a>
+            <span class="badge badge-primary badge-pill">16</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 6</a>
+            <span class="badge badge-primary badge-pill">45</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 7</a>
+            <span class="badge badge-primary badge-pill">44</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 8</a>
+            <span class="badge badge-primary badge-pill">46</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 9</a>
+            <span class="badge badge-primary badge-pill">70</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="">Lection 10</a>
+            <span class="badge badge-primary badge-pill">249</span>
+        </li>
+    </ul>
 
-        var storage = firebase.storage();
-        var storageRef = storage.ref('gs://taxi-unternehmerschein.appspot.com'); // Replace with your folder name
 
-        // Retrieve the list of lections and populate the lections list
-        var lectionsList = document.getElementById('lectionsList');
-        storageRef.listAll().then(function (result) {
-            result.prefixes.forEach(function (lectionRef) {
-                var lectionID = lectionRef.name.split(' ').pop();
-                var listItem = document.createElement('li');
-                listItem.className = 'nav';
-                listItem.dataset.lectionId = lectionID;
-                listItem.innerHTML = '<h3>Lection ' + lectionID + '</h3>';
-                lectionsList.appendChild(listItem);
-            });
-        });
 
-        // Handle click event on lections list items
-        lectionsList.addEventListener('click', function (event) {
-            var lectionID = event.target.dataset.lectionId;
+    <!-- login check -->
+    <script src="login_check.js" type="module"></script>
 
-            // Retrieve the list of questions for the selected lection
-            var questionsRef = storageRef.child('Questions/Question lection ' + lectionID);
-            questionsRef.listAll().then(function (result) {
-                var questionsList = document.getElementById('questionsList');
-                questionsList.innerHTML = ''; // Clear previous questions
 
-                result.items.forEach(function (questionRef) {
-                    var questionID = questionRef.name.split(' ').pop().split('.')[0];
-
-                    // Create a list item for each question
-                    var listItem = document.createElement('li');
-                    listItem.className = 'nav';
-                    listItem.dataset.questionId = questionID;
-                    listItem.innerHTML = '<h3>Question ' + questionID + '</h3>';
-                    questionsList.appendChild(listItem);
-                });
-            });
-        });
-
-        // Handle click event on questions list items
-        var questionsList = document.getElementById('questionsList');
-        questionsList.addEventListener('click', function (event) {
-            var questionID = event.target.dataset.questionId;
-
-            // Retrieve the image URL for the selected question
-            var questionRef = storageRef.child('Questions/Question lection 1/Question lection 1 (' + questionID + ').jpg');
-            questionRef.getDownloadURL().then(function (url) {
-                var questionImage = document.getElementById('questionImage');
-                questionImage.src = url;
-            });
-        });
-    </script>
+    <!-- bootrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
