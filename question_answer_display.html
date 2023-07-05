@@ -24,7 +24,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Lections</a>
+                    <a class="nav-link" href="Lections.html">Lections</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Question</a>
@@ -37,13 +37,16 @@
     </nav>
 
 
+    <!-- Add a new element to display the "Question Done" message -->
+    <div id="questionDoneMessage" style="display: none;">Question Done</div>
+
     <div class="container">
         <div class="box">
             <div class="question">
-                <img src="/20220226_145545.jpg" alt="" class="image-question question-img">
+                <img src="/time-left.png" alt="" class="image-question question-img">
             </div>
             <div class="answer ">
-                <img src="/20220226_145545.jpg" alt="" class="answer image down image-question answer-img">
+                <img src="/time-left.png" alt="" class="answer image down image-question answer-img">
             </div>
 
         </div>
@@ -54,19 +57,23 @@
 
 
     <style>
+        #questionDoneMessage{
+            text-align: center;
+            z-index: 10;
+        }
         .container {
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid red;
+            /* border: 1px solid red; */
         }
 
         .box {
             height: 90vh;
             width: 50vh;
-            border: 1px solid yellowgreen;
+            /* border: 1px solid yellowgreen; */
             display: flex;
             justify-content: space-between;
             flex-direction: column;
@@ -75,13 +82,13 @@
         .question {
             width: 100%;
             height: 48%;
-            border: 1px solid yellowgreen;
+            /* border: 1px solid yellowgreen; */
         }
 
         .answer {
             width: 100%;
             height: 48%;
-            border: 1px solid yellowgreen;
+            /* border: 1px solid yellowgreen; */
         }
 
         .image-question {
@@ -118,6 +125,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
 
 
@@ -142,6 +151,7 @@
 
 
         firebase.initializeApp(firebaseConfig);
+
 
 
 
@@ -207,6 +217,66 @@
                 console.log('Error getting image URL:', error);
             });
 
+
+
+        // Get a reference to the database service
+        const database = firebase.database();
+
+        var doubleClickTimeout; // Variable to track double-click timeout
+
+        // Add event listener for double-click event
+        document.addEventListener('dblclick', function () {
+            clearTimeout(doubleClickTimeout); // Clear previous timeout
+            doubleClickTimeout = setTimeout(function () {
+                // Single click action
+                console.log('Single click detected');
+            }, 300); // Set a timeout of 300 milliseconds to detect double-click
+
+            // Check if the user is authenticated
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    // Define the database reference you want to read from
+                    var userRef = database.ref('users/' + user.uid + '/quesDone');
+
+                    // Read data from the database reference
+                    userRef.once('value', function (snapshot) {
+                        var userData = snapshot.val();
+                        var quesDone = userData || 0; // Initialize quesDone to 0 if userData is null or undefined
+                        console.log(userData + "wdhwedfowifwofoiwjfowi");
+
+                        quesDone = quesDone + 1;
+
+                        // Update the Firebase Realtime Database with the value of quesDone
+                        database.ref("users/" + user.uid + "/quesDone").set(quesDone)
+                            .then(() => {
+                                console.log('Value set successfully.');
+                                showQuestionDoneMessage(); // Show the "Question Done" message on successful update
+                            })
+                            .catch((error) => {
+                                console.error('Error setting value:', error);
+                            });
+                    });
+                }
+            });
+        });
+
+        // Prevent text selection on double-click
+        document.addEventListener('mousedown', function (event) {
+            if (event.detail > 1) {
+                event.preventDefault();
+            }
+        });
+
+        // Function to show the "Question Done" message
+        function showQuestionDoneMessage() {
+            var messageElement = document.getElementById('questionDoneMessage');
+            messageElement.style.display = 'block';
+
+            // Set a timeout to hide the message after 3 seconds (adjust the duration as needed)
+            setTimeout(function () {
+                messageElement.style.display = 'none';
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
 
 
 
