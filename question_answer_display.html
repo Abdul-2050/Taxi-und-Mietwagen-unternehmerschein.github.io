@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" src="https://cdn.jsdelivr.net/gh/cotton123236/zoomist@latest/dist/zoomist.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Drive-Taxi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Progress<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Lections</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Question</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="box">
+          <div class="question">
+            <img src="/20220226_145545.jpg" alt="" class="image-question">
+          </div>
+          <div class="answer ">
+            <img src="/20220226_145545.jpg" alt="" class="answer image down image-question">
+          </div>
+          
+        </div>
+      </div>
+
+
+    <!-- https://via.placeholder.com/200 -->
+
+
+    <style>
+        .container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid red;
+        }
+      
+        .box {
+          height: 90vh;
+          width: 50vh;
+          border: 1px solid yellowgreen;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+        }
+      
+        .question {
+          width: 100%;
+          height: 48%;
+          border: 1px solid yellowgreen;
+        }
+      
+        .answer {
+          width: 100%;
+          height: 48%;
+          border: 1px solid yellowgreen;
+        }
+      
+        .image-question {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      
+        .image.down {
+          filter: blur(5px);
+        }
+      
+        .image.down.active {
+          filter: none;
+        }
+      </style>
+
+
+    <!-- login check -->
+    <script src="login_check.js" type="module"></script>
+
+
+    <!-- bootrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+
+    <script>
+        const downImage = document.querySelector('.image.down');
+
+        downImage.addEventListener('click', function () {
+            downImage.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>

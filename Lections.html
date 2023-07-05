@@ -37,44 +37,44 @@
 
 
     <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 1</a>
+        <li class="list-group-item d-flex justify-content-between">
+            <a id="Lection 1" href="">Lection 1</a>
             <span class="badge badge-primary badge-pill">5</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 2</a>
+            <a id="Lection 2" href="">Lection 2</a>
             <span class="badge badge-primary badge-pill">5</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 3</a>
+            <a id="Lection 3" href="">Lection 3</a>
             <span class="badge badge-primary badge-pill">8</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 4</a>
+            <a id="Lection 4" href="">Lection 4</a>
             <span class="badge badge-primary badge-pill">18</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 5</a>
+            <a id="Lection 5" href="">Lection 5</a>
             <span class="badge badge-primary badge-pill">16</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 6</a>
+            <a id="Lection 6" href="">Lection 6</a>
             <span class="badge badge-primary badge-pill">45</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 7</a>
+            <a id="Lection 7" href="">Lection 7</a>
             <span class="badge badge-primary badge-pill">44</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 8</a>
+            <a id="Lection 8" href="">Lection 8</a>
             <span class="badge badge-primary badge-pill">46</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 9</a>
+            <a id="Lection 9" href="">Lection 9</a>
             <span class="badge badge-primary badge-pill">70</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="">Lection 10</a>
+            <a id="Lection 10" href="">Lection 10</a>
             <span class="badge badge-primary badge-pill">249</span>
         </li>
     </ul>
@@ -95,6 +95,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all the lection links
+            var lectionLinks = document.querySelectorAll('a[id^="Lection"]');
+
+            // Attach click event listeners to the lection links
+            lectionLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    var lectionId = this.getAttribute('id'); // Get the clicked lection ID
+
+                    // Redirect to the "lection_questions" page with the lection ID as a parameter
+                    window.location.href = 'lection_questions.html?id=' + lectionId;
+                });
+            });
+        });
+
+    </script>
+
+    '
+    '
+
 </body>
 
 </html>
