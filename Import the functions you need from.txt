@@ -1,0 +1,42 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAuYoZO_ExZiKY2t2MnrzO_UnLk6ecvHUo",
+  authDomain: "taxi-unternehmerschein.firebaseapp.com",
+  databaseURL: "https://taxi-unternehmerschein-default-rtdb.firebaseio.com",
+  projectId: "taxi-unternehmerschein",
+  storageBucket: "taxi-unternehmerschein.appspot.com",
+  messagingSenderId: "753758307661",
+  appId: "1:753758307661:web:cc49ee33d1b317672a2304"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAuYoZO_ExZiKY2t2MnrzO_UnLk6ecvHUo",
+    authDomain: "taxi-unternehmerschein.firebaseapp.com",
+    databaseURL: "https://taxi-unternehmerschein-default-rtdb.firebaseio.com",
+    projectId: "taxi-unternehmerschein",
+    storageBucket: "taxi-unternehmerschein.appspot.com",
+    messagingSenderId: "753758307661",
+    appId: "1:753758307661:web:c2a4fcbedbd0eb9a2a2304"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>

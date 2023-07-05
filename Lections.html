@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Question List</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        li.nav {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        #questionImage {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="current">
+        <h1>Lections</h1>
+    </nav>
+    <article id="lections" class="current">
+        <section>
+            <ul class="list" id="lectionsList"></ul>
+        </section>
+    </article>
+    <nav class="next">
+        <a href="#" class="button back">Lections</a>
+        <h1 id="questionTitle">Question</h1>
+    </nav>
+    <article id="detail" class="next">
+        <section>
+            <img id="questionImage" src="" alt="Question Image">
+        </section>
+    </article>
+
+    <!-- Include the Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.1/firebase-storage.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuYoZO_ExZiKY2t2MnrzO_UnLk6ecvHUo",
+            authDomain: "taxi-unternehmerschein.firebaseapp.com",
+            databaseURL: "https://taxi-unternehmerschein-default-rtdb.firebaseio.com",
+            projectId: "taxi-unternehmerschein",
+            storageBucket: "taxi-unternehmerschein.appspot.com",
+            messagingSenderId: "753758307661",
+            appId: "1:753758307661:web:c2a4fcbedbd0eb9a2a2304"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        var storage = firebase.storage();
+        var storageRef = storage.ref('gs://taxi-unternehmerschein.appspot.com'); // Replace with your folder name
+
+        // Retrieve the list of lections and populate the lections list
+        var lectionsList = document.getElementById('lectionsList');
+        storageRef.listAll().then(function (result) {
+            result.prefixes.forEach(function (lectionRef) {
+                var lectionID = lectionRef.name.split(' ').pop();
+                var listItem = document.createElement('li');
+                listItem.className = 'nav';
+                listItem.dataset.lectionId = lectionID;
+                listItem.innerHTML = '<h3>Lection ' + lectionID + '</h3>';
+                lectionsList.appendChild(listItem);
+            });
+        });
+
+        // Handle click event on lections list items
+        lectionsList.addEventListener('click', function (event) {
+            var lectionID = event.target.dataset.lectionId;
+
+            // Retrieve the list of questions for the selected lection
+            var questionsRef = storageRef.child('Questions/Question lection ' + lectionID);
+            questionsRef.listAll().then(function (result) {
+                var questionsList = document.getElementById('questionsList');
+                questionsList.innerHTML = ''; // Clear previous questions
+
+                result.items.forEach(function (questionRef) {
+                    var questionID = questionRef.name.split(' ').pop().split('.')[0];
+
+                    // Create a list item for each question
+                    var listItem = document.createElement('li');
+                    listItem.className = 'nav';
+                    listItem.dataset.questionId = questionID;
+                    listItem.innerHTML = '<h3>Question ' + questionID + '</h3>';
+                    questionsList.appendChild(listItem);
+                });
+            });
+        });
+
+        // Handle click event on questions list items
+        var questionsList = document.getElementById('questionsList');
+        questionsList.addEventListener('click', function (event) {
+            var questionID = event.target.dataset.questionId;
+
+            // Retrieve the image URL for the selected question
+            var questionRef = storageRef.child('Questions/Question lection 1/Question lection 1 (' + questionID + ').jpg');
+            questionRef.getDownloadURL().then(function (url) {
+                var questionImage = document.getElementById('questionImage');
+                questionImage.src = url;
+            });
+        });
+    </script>
+</body>
+
+</html>

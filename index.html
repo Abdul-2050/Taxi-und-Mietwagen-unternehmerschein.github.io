@@ -47,7 +47,8 @@
         <svg class="radial-progress" data-countervalue="80" viewBox="0 0 80 80">
             <circle class="bar-static" cx="40" cy="40" r="35"></circle>
             <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-            <text class="countervalue start" x="50%" y="57%" transform="matrix(0, 1, -1, 0, 80, 0)">80</text>
+            <text id="progressBar" class="countervalue start" x="50%" y="57%"
+                transform="matrix(0, 1, -1, 0, 80, 0)"></text>
         </svg>
         <h1>Go and learn now</h1>
     </section>
@@ -103,8 +104,8 @@
 
 
     <!-- script for animation -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script>
         function radial_animate() {
             $('svg.radial-progress').each(function (index, value) {
                 $(this).find($('circle.bar--animated')).removeAttr('style');
@@ -172,7 +173,144 @@
 
         $window.on('scroll', check_if_in_view);
         $window.on('load', check_if_in_view);
+    </script> -->
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <!-- script for animation -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAMKzU7_2yHCM028kWmovUBOxn-qGYxktY",
+            authDomain: "taxi-company-e1a23.firebaseapp.com",
+            databaseURL: "https://taxi-company-e1a23-default-rtdb.firebaseio.com",
+            projectId: "taxi-company-e1a23",
+            storageBucket: "taxi-company-e1a23.appspot.com",
+            messagingSenderId: "835882517766",
+            appId: "1:835882517766:web:206757f55e5ecf3f0bca87",
+            measurementId: "G-0KF8YNXQDJ"
+        };
+
+
+        firebase.initializeApp(firebaseConfig);
+
+        var database = firebase.database();
+        var databasePercentage;
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                database.ref("users/" + user.uid + "/quesDone").get().then(function (snapshot) {
+                    var str = snapshot.val();
+                    if (snapshot.val() === null) {
+                        str = "0";
+                    }
+
+                    console.log("Percentage:", str);
+
+                    var quesDone = parseInt(str);
+                    var allQues = 506;
+                    databasePercentage = Math.floor((quesDone * 100) / allQues); // Round down the value
+
+                    console.log("User Details:");
+                    console.log("Display Name:", user.displayName);
+                    console.log("Email:", user.email);
+                    console.log("UID:", user.uid);
+                    console.log("Percentage:", databasePercentage);
+
+                    startAnimation(true);
+                });
+            }
+        });
+
+        function startAnimation(access) {
+            if (access) {
+                function radial_animate() {
+                    $('svg.radial-progress').each(function (index, value) {
+                        $(this).find($('circle.bar--animated')).removeAttr('style');
+                        // Get element in Viewport
+                        var elementTop = $(this).offset().top;
+                        var elementBottom = elementTop + $(this).outerHeight();
+                        var viewportTop = $(window).scrollTop();
+                        var viewportBottom = viewportTop + $(window).height();
+
+                        if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                            var percent = $(value).data('countervalue');
+                            var radius = $(this).find($('circle.bar--animated')).attr('r');
+                            var circumference = 2 * Math.PI * radius;
+                            var strokeDashOffset = circumference - ((percent * circumference) / 100);
+                            $(this).find($('circle.bar--animated')).animate({
+                                'stroke-dashoffset': strokeDashOffset
+                            }, 2800);
+                        }
+                    });
+                }
+
+                // To check if it is in viewport
+                var $window = $(window);
+
+                function check_if_in_view() {
+                    $('.countervalue').each(function () {
+                        if ($(this).hasClass('start')) {
+                            var elementTop = $(this).offset().top;
+                            var elementBottom = elementTop + $(this).outerHeight();
+
+                            var viewportTop = $(window).scrollTop();
+                            var viewportBottom = viewportTop + $(window).height();
+
+                            if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                                $(this).removeClass('start');
+                                var myNumbers = $(this).text();
+                                if (myNumbers == Math.floor(myNumbers)) {
+                                    $(this).animate({
+                                        Counter: $(this).text()
+                                    }, {
+                                        duration: 2800,
+                                        easing: 'swing',
+                                        step: function (now) {
+                                            $(this).text(Math.ceil(now) + '%');
+                                        }
+                                    });
+                                } else {
+                                    $(this).animate({
+                                        Counter: $(this).text()
+                                    }, {
+                                        duration: 2800,
+                                        easing: 'swing',
+                                        step: function (now) {
+                                            $(this).text(now.toFixed(2) + '%');
+                                        }
+                                    });
+                                }
+
+                                radial_animate();
+                            }
+                        }
+                    });
+                }
+
+                $window.on('scroll', check_if_in_view);
+                $window.on('load', check_if_in_view);
+
+                // Set the dynamic percentage value from your database
+                $('.radial-progress').attr('data-countervalue', databasePercentage);
+                $('.countervalue').text(databasePercentage + '%');
+                console.log(databasePercentage)
+
+                // Start the animation after setting the percentage
+                radial_animate();
+            }
+        }
     </script>
+
+
+
+
 
 
 </body>
