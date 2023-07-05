@@ -58,7 +58,7 @@
 
 
 
-    <script>
+    <!-- <script>
 
         // Retrieve the lection ID from the URL parameter
         var urlParams = new URLSearchParams(window.location.search);
@@ -70,42 +70,53 @@
         // Define the number of questions based on the lection ID
         var numQuestions = 0;
         switch (lectionId) {
-            case 'Lection 1':
+            case 'lection 1':
                 numQuestions = 5;
                 break;
-            case 'Lection 2':
+            case 'lection 2':
                 numQuestions = 5;
                 break;
-            case 'Lection 3':
+            case 'lection 3':
                 numQuestions = 8;
                 break;
-            case 'Lection 4':
+            case 'lection 4':
                 numQuestions = 18;
                 break;
-            case 'Lection 5':
+            case 'lection 5':
                 numQuestions = 16;
                 break;
-            case 'Lection 6':
+            case 'lection 6':
                 numQuestions = 45;
                 break;
-            case 'Lection 7':
+            case 'lection 7':
                 numQuestions = 44;
                 break;
 
-            case 'Lection 8':
+            case 'lection 8':
                 numQuestions = 46;
                 break;
 
 
-            case 'Lection 9':
+            case 'lection 9':
                 numQuestions = 70;
                 break;
 
 
-            case 'Lection 10':
+            case 'lection 10':
                 numQuestions = 249;
                 break;
 
+        }
+
+        function lectionNumber(str) {
+            // Remove all non-digit characters from the string using a regular expression
+            var number = str.replace(/\D/g, '');
+
+            // Convert the extracted string of digits to a number
+            number = parseInt(number);
+
+            // Return the extracted number
+            return number;
         }
 
 
@@ -118,6 +129,7 @@
             var aElement = document.createElement('a');
             aElement.href = 'lection_questions.html?id=' + lectionId; // Set the href for the link
             aElement.textContent = 'Question ' + i;
+            aElement.id = 'question-' + i; // Assign an ID to the <a> element
 
             var spanElement = document.createElement('span');
             spanElement.className = 'badge badge-primary badge-pill';
@@ -128,6 +140,97 @@
             ulElement.appendChild(liElement);
         }
 
+    </script> -->
+
+
+
+    <script>
+        // Retrieve the lection ID from the URL parameter
+        var urlParams = new URLSearchParams(window.location.search);
+        var lectionId = urlParams.get('id');
+    
+        // Get the <ul> element with the class "list-group"
+        var ulElement = document.querySelector('ul.list-group');
+    
+        // Define the number of questions based on the lection ID
+        var numQuestions = 0;
+        switch (lectionId) {
+            case 'lection 1':
+                numQuestions = 5;
+                break;
+            case 'lection 2':
+                numQuestions = 5;
+                break;
+            case 'lection 3':
+                numQuestions = 8;
+                break;
+            case 'lection 4':
+                numQuestions = 18;
+                break;
+            case 'lection 5':
+                numQuestions = 16;
+                break;
+            case 'lection 6':
+                numQuestions = 45;
+                break;
+            case 'lection 7':
+                numQuestions = 44;
+                break;
+            case 'lection 8':
+                numQuestions = 46;
+                break;
+            case 'lection 9':
+                numQuestions = 70;
+                break;
+            case 'lection 10':
+                numQuestions = 249;
+                break;
+        }
+    
+        function lectionNumber(str) {
+            // Remove all non-digit characters from the string using a regular expression
+            var number = str.replace(/\D/g, '');
+    
+            // Convert the extracted string of digits to a number
+            number = parseInt(number);
+    
+            // Return the extracted number
+            return number;
+        }
+    
+        // Function to handle question click and redirect to question_answer_display.html
+        function handleQuestionClick(questionId) {
+            // Construct the URL with lectionId and questionId
+            var redirectUrl = 'question_answer_display.html?id=' + lectionId + '&question=' + questionId;
+    
+            // Redirect to the question_answer_display.html page
+            window.location.href = redirectUrl;
+        }
+    
+        // Generate the <li> elements within the <ul> element
+        for (var i = 1; i <= numQuestions; i++) {
+            var liElement = document.createElement('li');
+            liElement.className = 'list-group-item d-flex justify-content-between align-items-center list-group-item-action';
+    
+            var aElement = document.createElement('a');
+            aElement.href = 'javascript:void(0)'; // Set the href as javascript:void(0) to prevent default link behavior
+            aElement.textContent = 'Question ' + i;
+            aElement.id = 'question-' + i; // Assign an ID to the <a> element
+    
+            // Add a click event listener to each question link
+            aElement.addEventListener('click', function() {
+                var questionId = this.id.split('-')[1];
+                handleQuestionClick(questionId);
+            });
+    
+            var spanElement = document.createElement('span');
+            spanElement.className = 'badge badge-primary badge-pill';
+            spanElement.textContent = i;
+    
+            liElement.appendChild(aElement); // Append the <a> element to the <li> element
+            liElement.appendChild(spanElement);
+            ulElement.appendChild(liElement);
+        }
     </script>
 
 
