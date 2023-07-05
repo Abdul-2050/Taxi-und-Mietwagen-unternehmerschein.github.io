@@ -137,16 +137,16 @@
         const googleBtn = document.getElementById("googleBtn");
 
         // Check if user is already signed in on page load
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                // User is logged in, redirect to index.html
-                const redirectURL = "index.html?" + getUserQueryParams(user);
-                window.location.href = redirectURL;
-            } else {
-                // User is not logged in, redirect to auth_google.html
-                window.location.href = "auth_google.html";
-            }
-        });
+        // auth.onAuthStateChanged((user) => {
+        //     if (user) {
+        //         // User is logged in, redirect to index.html
+        //         const redirectURL = "index.html?" + getUserQueryParams(user);
+        //         window.location.href = redirectURL;
+        //     } else {
+        //         // User is not logged in, redirect to auth_google.html
+        //         window.location.href = "authentication.html";
+        //     }
+        // });
 
         googleBtn.addEventListener('click', function () {
             // Code to execute when the button is clicked
@@ -189,6 +189,7 @@
                 .join("&");
         }
     </script>
+
 
 </body>
 
