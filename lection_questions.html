@@ -59,10 +59,12 @@
         // Retrieve the lection ID from the URL parameter
         var urlParams = new URLSearchParams(window.location.search);
         var lectionId = urlParams.get('id');
-    
+
+        console.log(lectionId + "Test")
+
         // Get the <ul> element with the class "list-group"
         var ulElement = document.querySelector('ul.list-group');
-    
+
         // Define the number of questions based on the lection ID
         var numQuestions = 0;
         switch (lectionId) {
@@ -97,54 +99,83 @@
                 numQuestions = 249;
                 break;
         }
-    
+
         function lectionNumber(str) {
             // Remove all non-digit characters from the string using a regular expression
             var number = str.replace(/\D/g, '');
-    
+
             // Convert the extracted string of digits to a number
             number = parseInt(number);
-    
+
             // Return the extracted number
             return number;
         }
-    
+
         // Function to handle question click and redirect to question_answer_display.html
         function handleQuestionClick(questionId) {
             // Construct the URL with lectionId and questionId
             var redirectUrl = 'question_answer_display.html?id=' + lectionId + '&question=' + questionId;
-    
+
             // Redirect to the question_answer_display.html page
             window.location.href = redirectUrl;
         }
-    
+
+        // Generate the <li> elements within the <ul> element
+        // for (var i = 1; i <= numQuestions; i++) {
+        //     var liElement = document.createElement('li');
+        //     liElement.className = 'list-group-item d-flex justify-content-between align-items-center list-group-item-action';
+
+        //     var aElement = document.createElement('a');
+        //     aElement.href = 'javascript:void(0)'; // Set the href as javascript:void(0) to prevent default link behavior
+        //     aElement.textContent = 'Question ' + i;
+        //     aElement.id = 'question-' + i; // Assign an ID to the <a> element
+
+        //     // Add a click event listener to each question link
+        //     liElement.addEventListener('click', function() {
+        //         var questionId = aElement.id.split('-')[1];
+        //         handleQuestionClick(questionId);
+        //     });
+
+        //     var spanElement = document.createElement('span');
+        //     spanElement.className = 'badge badge-primary badge-pill';
+        //     spanElement.textContent = i;
+
+        //     liElement.appendChild(aElement); // Append the <a> element to the <li> element
+        //     liElement.appendChild(spanElement);
+        //     ulElement.appendChild(liElement);
+        // }
+
         // Generate the <li> elements within the <ul> element
         for (var i = 1; i <= numQuestions; i++) {
             var liElement = document.createElement('li');
-            liElement.className = 'list-group-item d-flex justify-content-between align-items-center list-group-item-action';
-    
+            liElement.className =
+                'list-group-item d-flex justify-content-between align-items-center list-group-item-action';
+
             var aElement = document.createElement('a');
-            aElement.href = 'javascript:void(0)'; // Set the href as javascript:void(0) to prevent default link behavior
+            aElement.href = 'javascript:void(0)';
             aElement.textContent = 'Question ' + i;
-            aElement.id = 'question-' + i; // Assign an ID to the <a> element
-    
-            // Add a click event listener to each question link
-            liElement.addEventListener('click', function() {
-                var questionId = aElement.id.split('-')[1];
-                handleQuestionClick(questionId);
-            });
-    
+            aElement.id = 'question-' + i;
+
             var spanElement = document.createElement('span');
             spanElement.className = 'badge badge-primary badge-pill';
             spanElement.textContent = i;
-    
-            liElement.appendChild(aElement); // Append the <a> element to the <li> element
+
+            liElement.appendChild(aElement);
             liElement.appendChild(spanElement);
             ulElement.appendChild(liElement);
+
+            // Add a click event listener to each <li> element
+            liElement.addEventListener('click', function () {
+                var questionId = this.querySelector('a').id.split('-')[1];
+                handleQuestionClick(questionId);
+            });
         }
+
+
+
     </script>
 
 
 </body>
 
-</html> 
+</html>

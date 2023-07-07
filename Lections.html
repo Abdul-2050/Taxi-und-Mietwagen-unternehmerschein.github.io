@@ -123,16 +123,16 @@
 
         var liElements = document.querySelectorAll('ul.list-group li');
 
-liElements.forEach(function (liElement) {
-    liElement.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default link behavior
+        liElements.forEach(function (liElement) {
+            liElement.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default link behavior
 
-        var lectionId = this.querySelector('a').getAttribute('id'); // Get the clicked lection ID from the associated <a> element
+                var lectionId = this.querySelector('a').getAttribute('id'); // Get the clicked lection ID from the associated <a> element
 
-        // Redirect to the desired page with the lection ID as a parameter
-        window.location.href = 'lection_questions.html?id=' + lectionId;
-    });
-});
+                // Redirect to the desired page with the lection ID as a parameter
+                window.location.href = 'lection_questions.html?id=' + lectionId;
+            });
+        });
 
 
     </script>
