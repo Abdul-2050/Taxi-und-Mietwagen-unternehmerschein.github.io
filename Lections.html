@@ -100,27 +100,42 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get all the lection links
-            var lectionLinks = document.querySelectorAll('a[id^="lection"]');
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     // Get all the lection links
+        //     var lectionLinks = document.querySelectorAll('a[id^="lection"]');
 
-            // Attach click event listeners to the lection links
-            lectionLinks.forEach(function (link) {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault(); // Prevent the default link behavior
 
-                    var lectionId = this.getAttribute('id'); // Get the clicked lection ID
+        //     var liElements = document.querySelectorAll('ul.list-group li');
 
-                    // Redirect to the "lection_questions" page with the lection ID as a parameter
-                    window.location.href = 'lection_questions.html?id=' + lectionId;
-                });
-            });
-        });
+
+        //     // Attach click event listeners to the lection links
+        //     lectionLinks.forEach(function (link) {
+        //         link.addEventListener('click', function (event) {
+        //             event.preventDefault(); // Prevent the default link behavior
+
+        //             var lectionId = this.getAttribute('id'); // Get the clicked lection ID
+
+        //             // Redirect to the "lection_questions" page with the lection ID as a parameter
+        //             window.location.href = 'lection_questions.html?id=' + lectionId;
+        //         });
+        //     });
+        // });
+
+        var liElements = document.querySelectorAll('ul.list-group li');
+
+liElements.forEach(function (liElement) {
+    liElement.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        var lectionId = this.querySelector('a').getAttribute('id'); // Get the clicked lection ID from the associated <a> element
+
+        // Redirect to the desired page with the lection ID as a parameter
+        window.location.href = 'lection_questions.html?id=' + lectionId;
+    });
+});
+
 
     </script>
-
-    '
-    '
 
 </body>
 
