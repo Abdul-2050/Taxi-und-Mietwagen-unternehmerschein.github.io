@@ -57,7 +57,7 @@
 
     <div class="container">
         <!-- Sign out button -->
-        <button onclick="signOut()">Sign Out</button>
+        <button id="signout">Sign Out</button>
     </div>
 
 
@@ -122,8 +122,12 @@
     </script>
 
     <script>
-        // Function to handle sign out
-        function signOut() {
+
+        // Get the element by ID
+        var button = document.getElementById('signout');
+
+        // Add event listener to the button
+        button.addEventListener('click', function () {
             firebase.auth().signOut().then(function () {
                 // Sign-out successful.
                 console.log('User signed out successfully.');
@@ -131,7 +135,7 @@
                 // An error happened.
                 console.log('An error occurred while signing out:', error);
             });
-        }
+        });
     </script>
 
 </body>
