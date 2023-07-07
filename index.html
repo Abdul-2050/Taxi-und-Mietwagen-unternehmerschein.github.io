@@ -33,7 +33,7 @@
                     <a class="nav-link" href="Lections.html">Lections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Question</a>
+                    <a class="nav-link" href="settings.html">Settings</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link disabled" href="#">Disabled</a>
@@ -97,11 +97,6 @@
         const email = queryParams.email;
         const displayName = queryParams.displayName;
         const photoURL = queryParams.photoURL;
-
-        console.log("User ID:", uid);
-        console.log("Email:", email);
-        console.log("Display Name:", displayName);
-        console.log("Photo URL:", photoURL);
     </script>
 
 
@@ -234,12 +229,6 @@
                     var quesDone = parseInt(str);
                     var allQues = 506;
                     databasePercentage = Math.floor((quesDone * 100) / allQues); // Round down the value
-
-                    console.log("User Details:");
-                    console.log("Display Name:", user.displayName);
-                    console.log("Email:", user.email);
-                    console.log("UID:", user.uid);
-                    console.log("Percentage:", databasePercentage);
 
                     startAnimation(true);
                 });
