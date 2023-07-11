@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Drive-Taxi</a>
+        <a class="navbar-brand" href="index.html">Drive-Taxi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,10 +43,10 @@
     <div class="container">
         <div class="box">
             <div class="question">
-                <img src="#" alt="" class="image-question question-img" id="my-question" style="border-radius: 8px;">
+                <img src="time-left.png" alt="" class="image-question question-img" id="my-question" style="border-radius: 8px;">
             </div>
             <div class="answer ">
-                <img src="#" alt="" class="answer image down image-question answer-img">
+                <img src="time-left.png" alt="" class="answer image down image-question answer-img">
             </div>
 
         </div>
@@ -230,7 +230,7 @@
         // Construct the path to the image based on lectionId and questionId
         // var questionPath = 'lections/' + lectionId + '/questions/' + questionId + '.jpg'; // Assuming the images are in JPEG format
 
-        var questionPath = 'Questions/Question lection ' + lectionId + '/Question lection ' + lectionId + ' (' + questionId + ').jpg';; // Assuming the images are in JPEG format
+        var questionPath = 'Questions/Question lection ' + lectionId + '/Question lection ' + lectionId + ' (' + questionId + ').jpg'; // Assuming the images are in JPEG format
         var answerPath = 'Answers/Answer lection ' + lectionId + '/Answer lection ' + lectionId + ' (' + questionId + ').jpg';; // Assuming the images are in JPEG format
 
 
@@ -242,7 +242,8 @@
                 answerImage.src = url;
             })
             .catch(function (error) {
-                console.log('Error getting image URL:', error);
+
+                console.log('Error getting image URL:');
             });
 
         // Get the image URL from Firebase Storage
@@ -253,7 +254,7 @@
                 answerImage.src = url;
             })
             .catch(function (error) {
-                console.log('Error getting image URL:', error);
+                console.log('Error getting image URL:');
             });
 
 

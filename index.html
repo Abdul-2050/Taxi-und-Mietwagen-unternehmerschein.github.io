@@ -18,7 +18,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Drive-Taxi</a>
+        <a class="navbar-brand" href="index.html">Drive-Taxi</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,15 +43,19 @@
     </nav>
 
 
-    <section class="svg-container">
-        <svg class="radial-progress" data-countervalue="80" viewBox="0 0 80 80">
-            <circle class="bar-static" cx="40" cy="40" r="35"></circle>
-            <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-            <text id="progressBar" class="countervalue start" x="50%" y="57%"
-                transform="matrix(0, 1, -1, 0, 80, 0)"></text>
-        </svg>
-        <h1>Go and learn now</h1>
-    </section>
+    <div class="mainContainer">
+        <section class="svg-container">
+            <svg class="radial-progress" data-countervalue="80" viewBox="0 0 80 80">
+                <circle class="bar-static" cx="40" cy="40" r="35"></circle>
+                <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
+                <text id="progressBar" class="countervalue start" x="50%" y="57%"
+                    transform="matrix(0, 1, -1, 0, 80, 0)"></text>
+            </svg>
+        </section>
+        <div class="goBtnCon">
+            <a href="Lections.html" class="goBtn">Go and Learn Now</a>
+        </div>
+    </div>
 
 
     <!-- login check -->
@@ -89,8 +93,6 @@
         // Retrieve query parameters
         const queryParams = getQueryParams();
 
-        // Log query parameters to the console
-        console.log("Query Parameters:", queryParams);
 
         // Access specific query parameter values
         const uid = queryParams.uid;
@@ -182,7 +184,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 
-       // This is for firebase Taxi-company
+        // This is for firebase Taxi-company
 
         // Your web app's Firebase configuration
         const firebaseConfig = {
@@ -197,7 +199,7 @@
         };
 
 
-         // This is for firebase taxi-unternehmerschein
+        // This is for firebase taxi-unternehmerschein
 
         // Your web app's Firebase configuration
         // const firebaseConfig = {
