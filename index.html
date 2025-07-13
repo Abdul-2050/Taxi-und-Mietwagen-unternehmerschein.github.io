@@ -1,413 +1,51 @@
-
-
-<!-- 
-
 <!DOCTYPE html>
-<html>
-
+<html lang="de">
 <head>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-    <link rel="stylesheet" href="index.js">
-
-    <style>
-        body {
-            /* border: 1px solid greenyellow; */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23ff057c'/%3E%3Cstop offset='1' stop-color='%23321575'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='7.26'%3E%3Cpath d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='2.4200000000000004' transform='' cx='500' cy='100' r='40'/%3E%3Cpath transform='' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='2.2'%3E%3Cpath transform='' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='4.840000000000001' transform='' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        /*Required CSS*/
-        svg.radial-progress {
-            height: auto;
-            max-width: 240px;
-            padding: 0;
-            transform: rotate(-90deg);
-            width: 100%;
-            background-image: linear-gradient(-225deg,
-                    #ff057c 0%,
-                    #8d0b93 50%,
-                    #321575 100%);
-            border-radius: 50%;
-        }
-
-        section.svg-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* border: 1px solid red; */
-            height: 50vh;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23ff057c'/%3E%3Cstop offset='1' stop-color='%23321575'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='7.26'%3E%3Cpath d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='2.4200000000000004' transform='' cx='500' cy='100' r='40'/%3E%3Cpath transform='' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='2.2'%3E%3Cpath transform='' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='4.840000000000001' transform='' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-
-            /* background-color: #ffffff; */
-            /* background-position: bottom; */
-            /* background-size: cover; */
-        }
-
-        .devider {
-            font-size: 50px;
-            padding: 20px;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        svg.radial-progress circle {
-            fill: transparent;
-            stroke: #fff;
-        }
-
-        svg.radial-progress circle.bar-static {
-            stroke: #fafafa !important;
-        }
-
-        svg.radial-progress circle.bar--animated {
-            stroke-dasharray: 219.91148575129;
-            stroke: #ffffff;
-            stroke-dashoffset: 219.91148575129;
-            stroke-width: 4px;
-            stroke-linecap: round;
-        }
-
-        svg.radial-progress text {
-            fill: #fafafa;
-            font-family: Roboto;
-            font-size: 16px;
-            font-weight: 700;
-            text-anchor: middle;
-            text-shadow: 0 0 5px #0000007a;
-        }
-
-        .goBtnCon {
-            text-align: center;
-        }
-
-        .goBtn {
-            /* border: 1px solid greenyellow; */
-            border-radius: 16px;
-            background-color: rgb(31, 29, 29);
-            color: white;
-            text-decoration: none;
-            padding: 8px;
-        }
-    </style>
-
+  <meta charset="UTF-8">
+  <title>Diese Seite ist nicht mehr aktiv</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #d80000;
+      font-size: 32px;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 20px;
+      background-color: black;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    img {
+      margin-top: 30px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
-
 <body>
+  <h1>🚨 Diese Seite ist veraltet!</h1>
+  <p>Besuche jetzt unsere neue, moderne Plattform zur Prüfungsvorbereitung:</p>
+  <a href="https://www.taxi-experte.de" target="_blank">👉 www.taxi-experte.de</a>
+  <p>✔ 100 % prüfungsrelevante Fragen<br>
+     ✔ Online-Kurse mit täglichen Updates<br>
+     ✔ Flexibles Lernen – ohne Bücher!</p>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Drive-Taxi</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Progress<span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="Lections.html">Lections</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="settings.html">Settings</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-
-
-    <div class="mainContainer">
-        <section class="svg-container">
-            <svg class="radial-progress" data-countervalue="80" viewBox="0 0 80 80">
-                <circle class="bar-static" cx="40" cy="40" r="35"></circle>
-                <circle class="bar--animated" cx="40" cy="40" r="35" style="stroke-dashoffset: 217.8;"></circle>
-                <text id="progressBar" class="countervalue start" x="50%" y="57%"
-                    transform="matrix(0, 1, -1, 0, 80, 0)"></text>
-            </svg>
-        </section>
-        <div class="goBtnCon">
-            <a href="Lections.html" class="goBtn">Go and Learn Now</a>
-        </div>
-    </div>
-
-
-    <!-- login check -->
-    <script src="login_check.js" type="module"></script>
-
-
-
-
-    <!-- bootrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-
-
-    <!-- // script for get the user infomation -->
-    <script>
-        // Function to parse URL query parameters
-        function getQueryParams() {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const params = {};
-            for (let param of urlParams) {
-                params[param[0]] = param[1];
-            }
-            return params;
-        }
-
-        // Retrieve query parameters
-        const queryParams = getQueryParams();
-
-
-        // Access specific query parameter values
-        const uid = queryParams.uid;
-        const email = queryParams.email;
-        const displayName = queryParams.displayName;
-        const photoURL = queryParams.photoURL;
-    </script>
-
-
-    <!-- script for animation -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-    <!-- <script>
-        function radial_animate() {
-            $('svg.radial-progress').each(function (index, value) {
-                $(this).find($('circle.bar--animated')).removeAttr('style');
-                // Get element in Viewport
-                var elementTop = $(this).offset().top;
-                var elementBottom = elementTop + $(this).outerHeight();
-                var viewportTop = $(window).scrollTop();
-                var viewportBottom = viewportTop + $(window).height();
-
-                if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                    var percent = $(value).data('countervalue');
-                    var radius = $(this).find($('circle.bar--animated')).attr('r');
-                    var circumference = 2 * Math.PI * radius;
-                    var strokeDashOffset = circumference - ((percent * circumference) / 100);
-                    $(this).find($('circle.bar--animated')).animate({
-                        'stroke-dashoffset': strokeDashOffset
-                    }, 2800);
-                }
-            });
-        }
-
-        // To check if it is in viewport
-        var $window = $(window);
-
-        function check_if_in_view() {
-            $('.countervalue').each(function () {
-                if ($(this).hasClass('start')) {
-                    var elementTop = $(this).offset().top;
-                    var elementBottom = elementTop + $(this).outerHeight();
-
-                    var viewportTop = $(window).scrollTop();
-                    var viewportBottom = viewportTop + $(window).height();
-
-                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                        $(this).removeClass('start');
-                        $('.countervalue').text();
-                        var myNumbers = $(this).text();
-                        if (myNumbers == Math.floor(myNumbers)) {
-                            $(this).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 2800,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(Math.ceil(now) + '%');
-                                }
-                            });
-                        } else {
-                            $(this).animate({
-                                Counter: $(this).text()
-                            }, {
-                                duration: 2800,
-                                easing: 'swing',
-                                step: function (now) {
-                                    $(this).text(now.toFixed(2) + '$');
-                                }
-                            });
-                        }
-
-                        radial_animate();
-                    }
-                }
-            });
-        }
-
-        $window.on('scroll', check_if_in_view);
-        $window.on('load', check_if_in_view);
-    </script> -->
-
-
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-    <!-- script for animation -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-
-        // This is for firebase Taxi-company
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAMKzU7_2yHCM028kWmovUBOxn-qGYxktY",
-            authDomain: "taxi-company-e1a23.firebaseapp.com",
-            databaseURL: "https://taxi-company-e1a23-default-rtdb.firebaseio.com",
-            projectId: "taxi-company-e1a23",
-            storageBucket: "taxi-company-e1a23.appspot.com",
-            messagingSenderId: "835882517766",
-            appId: "1:835882517766:web:206757f55e5ecf3f0bca87",
-            measurementId: "G-0KF8YNXQDJ"
-        };
-
-
-        // This is for firebase taxi-unternehmerschein
-
-        // Your web app's Firebase configuration
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyAuYoZO_ExZiKY2t2MnrzO_UnLk6ecvHUo",
-        //     authDomain: "taxi-unternehmerschein.firebaseapp.com",
-        //     databaseURL: "https://taxi-unternehmerschein-default-rtdb.firebaseio.com",
-        //     projectId: "taxi-unternehmerschein",
-        //     storageBucket: "taxi-unternehmerschein.appspot.com",
-        //     messagingSenderId: "753758307661",
-        //     appId: "1:753758307661:web:c2a4fcbedbd0eb9a2a2304"
-        // };
-
-
-        firebase.initializeApp(firebaseConfig);
-
-        var database = firebase.database();
-        var databasePercentage;
-
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                database.ref("users/" + user.uid + "/quesDone").get().then(function (snapshot) {
-                    var str = snapshot.val();
-                    if (snapshot.val() === null) {
-                        str = "0";
-                    }
-
-                    console.log("Percentage:", str);
-
-                    var quesDone = parseInt(str);
-                    var allQues = 506;
-                    databasePercentage = Math.floor((quesDone * 100) / allQues); // Round down the value
-
-                    startAnimation(true);
-                });
-            }
-        });
-
-        function startAnimation(access) {
-            if (access) {
-                function radial_animate() {
-                    $('svg.radial-progress').each(function (index, value) {
-                        $(this).find($('circle.bar--animated')).removeAttr('style');
-                        // Get element in Viewport
-                        var elementTop = $(this).offset().top;
-                        var elementBottom = elementTop + $(this).outerHeight();
-                        var viewportTop = $(window).scrollTop();
-                        var viewportBottom = viewportTop + $(window).height();
-
-                        if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                            var percent = $(value).data('countervalue');
-                            var radius = $(this).find($('circle.bar--animated')).attr('r');
-                            var circumference = 2 * Math.PI * radius;
-                            var strokeDashOffset = circumference - ((percent * circumference) / 100);
-                            $(this).find($('circle.bar--animated')).animate({
-                                'stroke-dashoffset': strokeDashOffset
-                            }, 2800);
-                        }
-                    });
-                }
-
-                // To check if it is in viewport
-                var $window = $(window);
-
-                function check_if_in_view() {
-                    $('.countervalue').each(function () {
-                        if ($(this).hasClass('start')) {
-                            var elementTop = $(this).offset().top;
-                            var elementBottom = elementTop + $(this).outerHeight();
-
-                            var viewportTop = $(window).scrollTop();
-                            var viewportBottom = viewportTop + $(window).height();
-
-                            if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                                $(this).removeClass('start');
-                                var myNumbers = $(this).text();
-                                if (myNumbers == Math.floor(myNumbers)) {
-                                    $(this).animate({
-                                        Counter: $(this).text()
-                                    }, {
-                                        duration: 2800,
-                                        easing: 'swing',
-                                        step: function (now) {
-                                            $(this).text(Math.ceil(now) + '%');
-                                        }
-                                    });
-                                } else {
-                                    $(this).animate({
-                                        Counter: $(this).text()
-                                    }, {
-                                        duration: 2800,
-                                        easing: 'swing',
-                                        step: function (now) {
-                                            $(this).text(now.toFixed(2) + '%');
-                                        }
-                                    });
-                                }
-
-                                radial_animate();
-                            }
-                        }
-                    });
-                }
-
-                $window.on('scroll', check_if_in_view);
-                $window.on('load', check_if_in_view);
-
-                // Set the dynamic percentage value from your database
-                $('.radial-progress').attr('data-countervalue', databasePercentage);
-                $('.countervalue').text(databasePercentage + '%');
-                console.log(databasePercentage)
-
-                // Start the animation after setting the percentage
-                radial_animate();
-            }
-        }
-    </script>
-
-
-
-
-
-
+  <!-- 🔽 Bild deines neuen Kurses hier einfügen -->
+  <img src="https://taxi-experte.de/wp-content/uploads/2025/07/ChatGPT-Image-Jul-13-2025-04_06_57-PM.png" alt="Kurs Taxi & Mietwagen IHK Vorbereitung">
 </body>
-
 </html>
-
-
--->
