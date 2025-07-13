@@ -1,352 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <link rel="stylesheet" src="https://cdn.jsdelivr.net/gh/cotton123236/zoomist@latest/dist/zoomist.min.css" />
+  <meta charset="UTF-8">
+  <title>Diese Seite ist nicht mehr aktiv</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #d80000;
+      font-size: 32px;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 20px;
+      background-color: black;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    img {
+      margin-top: 30px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Drive-Taxi</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Progress<span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="Lections.html">Lections</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="settings.html">Settings</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-
-
-    <!-- Add a new element to display the "Question Done" message -->
-    <div id="questionDoneMessage" style="display: none;">👍</div>
-
-    <div class="container">
-        <div class="box">
-            <div class="question">
-                <img src="time-left.png" alt="" class="image-question question-img" id="my-question"
-                    style="border-radius: 8px;">
-            </div>
-            <div class="answer ">
-                <img src="time-left.png" alt="" class="answer image down image-question answer-img">
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- https://via.placeholder.com/200 -->
-
-
-    <style>
-        #questionDoneMessage {
-            text-align: center;
-            z-index: 10;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 80px;
-            /* border: 1px solid red; */
-            display: none;
-        }
-
-        .container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* border: 1px solid red; */
-        }
-
-        .box {
-            height: 90vh;
-            width: 50vh;
-            /* border: 1px solid yellowgreen; */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .question {
-            width: 100%;
-            height: 48%;
-            /* border: 1px solid yellowgreen; */
-            overflow: hidden;
-            /* display: inline-block; */
-        }
-
-        .question img {
-            transform-origin: center center;
-        }
-
-        .answer {
-            width: 100%;
-            height: 48%;
-            /* border: 1px solid yellowgreen; */
-        }
-
-        .image-question {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .image.down {
-            filter: blur(5px);
-        }
-
-        .image.down.active {
-            filter: none;
-        }
-
-
-        .rotate-img {
-            transform: rotate(-90deg);
-        }
-    </style>
-
-    <style>
-        body {
-            /* border: 1px solid greenyellow; */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(0,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23ff057c'/%3E%3Cstop offset='1' stop-color='%23321575'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='7.26'%3E%3Cpath d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='2.4200000000000004' transform='' cx='500' cy='100' r='40'/%3E%3Cpath transform='' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='2.2'%3E%3Cpath transform='' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='4.840000000000001' transform='' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-    </style>
-
-
-    <!-- login check -->
-    <script src="login_check.js" type="module"></script>
-
-
-    <!-- bootrap -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-
-
-
-    <script>
-        const downImage = document.querySelector('.image.down');
-
-        downImage.addEventListener('click', function () {
-            downImage.classList.toggle('active');
-        });
-
-
-
-        // This is for firebase Taxi-company
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAMKzU7_2yHCM028kWmovUBOxn-qGYxktY",
-            authDomain: "taxi-company-e1a23.firebaseapp.com",
-            databaseURL: "https://taxi-company-e1a23-default-rtdb.firebaseio.com",
-            projectId: "taxi-company-e1a23",
-            storageBucket: "taxi-company-e1a23.appspot.com",
-            messagingSenderId: "835882517766",
-            appId: "1:835882517766:web:206757f55e5ecf3f0bca87",
-            measurementId: "G-0KF8YNXQDJ"
-        };
-
-
-        // This is for firebase taxi-unternehmerschein
-
-        // Your web app's Firebase configuration
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyAuYoZO_ExZiKY2t2MnrzO_UnLk6ecvHUo",
-        //     authDomain: "taxi-unternehmerschein.firebaseapp.com",
-        //     databaseURL: "https://taxi-unternehmerschein-default-rtdb.firebaseio.com",
-        //     projectId: "taxi-unternehmerschein",
-        //     storageBucket: "taxi-unternehmerschein.appspot.co    ",
-        //     messagingSenderId: "753758307661",
-        //     appId: "1:753758307661:web:c2a4fcbedbd0eb9a2a2304"
-        // };
- 
-
-        firebase.initializeApp(firebaseConfig);
-
-
-
-
-
-        // Retrieve the lectionId and questionId from the URL parameters
-        var urlParams = new URLSearchParams(window.location.search);
-
-
-        var lectionId = urlParams.get('id');
-        var questionId = urlParams.get('question');
-        console.log(questionId + "test")
-
-        function lectionNumber(str) {
-            // Remove all non-digit characters from the string using a regular expression
-            var number = str.replace(/\D/g, '');
-
-            // Convert the extracted string of digits to a number
-            number = parseInt(number);
-
-            // Return the extracted number
-            return number;
-        }
-
-        lectionId = lectionNumber(lectionId);
-        questionId = lectionNumber(questionId);
-
-
-        // Print the retrieved values to the console (you can replace this with your desired logic)
-        console.log('Lection ID:', lectionId);
-        console.log('Question ID:', questionId);
-
-        // Rest of your code...
-
-        // Get the Firebase Storage reference for your images
-        var storageRef = firebase.storage().ref();
-
-
-        // Construct the path to the image based on lectionId and questionId
-        // var questionPath = 'lections/' + lectionId + '/questions/' + questionId + '.jpg'; // Assuming the images are in JPEG format
-
-        var questionPath = 'Questions/Question lection ' + lectionId + '/Question lection ' + lectionId + ' (' + questionId + ').jpg'; // Assuming the images are in JPEG format
-        var answerPath = 'Answers/Answer lection ' + lectionId + '/Answer lection ' + lectionId + ' (' + questionId + ').jpg';; // Assuming the images are in JPEG format
-
-
-        // Get the image URL from Firebase Storage
-        storageRef.child(questionPath).getDownloadURL()
-            .then(function (url) {
-                // Set the retrieved URL as the src attribute of the answer image
-                var answerImage = document.querySelector('.question-img');
-                answerImage.src = url;
-            })
-            .catch(function (error) {
-
-                console.log('Error getting image URL:');
-            });
-
-        // Get the image URL from Firebase Storage
-        storageRef.child(answerPath).getDownloadURL()
-            .then(function (url) {
-                // Set the retrieved URL as the src attribute of the answer image
-                var answerImage = document.querySelector('.answer-img');
-                answerImage.src = url;
-            })
-            .catch(function (error) {
-                console.log('Error getting image URL:');
-            });
-
-
-        // Get a reference to the database service
-        const database = firebase.database();
-
-        var doubleClickTimeout; // Variable to track double-click timeout
-
-        // Add event listener for double-click event
-        document.addEventListener('dblclick', function () {
-            clearTimeout(doubleClickTimeout); // Clear previous timeout
-            doubleClickTimeout = setTimeout(function () {
-                // Single click action
-                console.log('Single click detected');
-            }, 300); // Set a timeout of 300 milliseconds to detect double-click
-
-            // Check if the user is authenticated
-            firebase.auth().onAuthStateChanged(function (user) {
-                if (user) {
-                    // Define the database reference you want to read from
-                    var userRef = database.ref('users/' + user.uid + '/quesDone');
-
-                    // Read data from the database reference
-                    userRef.once('value', function (snapshot) {
-                        var userData = snapshot.val();
-                        var quesDone = userData || 0; // Initialize quesDone to 0 if userData is null or undefined
-                        console.log(userData + "wdhwedfowifwofoiwjfowi");
-
-                        quesDone = quesDone + 1;
-
-                        // Update the Firebase Realtime Database with the value of quesDone
-                        database.ref("users/" + user.uid + "/quesDone").set(quesDone)
-                            .then(() => {
-                                console.log('Value set successfully.');
-                                showQuestionDoneMessage(); // Show the "Question Done" message on successful update
-                            })
-                            .catch((error) => {
-                                console.error('Error setting value:', error);
-                            });
-                    });
-                }
-            });
-        });
-
-        // Prevent text selection on double-click
-        document.addEventListener('mousedown', function (event) {
-            if (event.detail > 1) {
-                event.preventDefault();
-            }
-        });
-
-        // Function to show the "Question Done" message
-        function showQuestionDoneMessage() {
-            var messageElement = document.getElementById('questionDoneMessage');
-            messageElement.style.display = 'block';
-
-            // Set a timeout to hide the message after 3 seconds (adjust the duration as needed)
-            setTimeout(function () {
-                messageElement.style.display = 'none';
-            }, 1000); // 3000 milliseconds = 3 seconds
-        }
-
-
-
-    </script>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', function () {
-            var img = document.getElementById('my-question');
-
-            img.addEventListener('load', function () {
-                var width = img.naturalWidth;
-                var height = img.naturalHeight;
-
-                if (width > height) {
-                    img.classList.add('rotate-img');
-                    img.classList.add('image-question');
-                }
-            });
-        });
-
-
-    </script>
-
+  <h1>🚨 Diese Seite ist veraltet!</h1>
+  <p>Besuche jetzt unsere neue, moderne Plattform zur Prüfungsvorbereitung:</p>
+  <a href="https://www.taxi-experte.de" target="_blank">👉 www.taxi-experte.de</a>
+  <p>✔ 100 % prüfungsrelevante Fragen<br>
+     ✔ Online-Kurse mit täglichen Updates<br>
+     ✔ Flexibles Lernen – ohne Bücher!</p>
+
+  <!-- 🔽 Bild deines neuen Kurses hier einfügen -->
+  <img src="https://taxi-experte.de/wp-content/uploads/2025/07/ChatGPT-Image-Jul-13-2025-04_06_57-PM.png" alt="Kurs Taxi & Mietwagen IHK Vorbereitung">
 </body>
-
 </html>
